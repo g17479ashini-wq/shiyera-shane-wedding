@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiyera & Shane - Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #fdfbff; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #4a4a4a; }
+        .main-card { position: relative; width: 95%; max-width: 600px; background: white; padding: 60px 25px; margin: 40px 10px; box-shadow: 0 15px 45px rgba(94, 58, 115, 0.1); border-radius: 12px; text-align: center; overflow: hidden; border: 1px solid #eee; }
+        
+        .floral { position: absolute; width: 180px; z-index: 0; opacity: 0.8; pointer-events: none; }
+        .top-left { top: -20px; left: -20px; }
+        .top-right { top: -20px; right: -20px; transform: rotate(90deg); }
+        .bottom-left { bottom: -20px; left: -20px; transform: rotate(-90deg); }
+        .bottom-right { bottom: -20px; right: -20px; transform: rotate(180deg); }
+
+        .content { position: relative; z-index: 1; }
+        .names { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #5e3a73; margin: 15px 0; line-height: 1.1; }
+        .gold-circle { border: 1px solid #d4af37; border-radius: 50%; padding: 35px 15px; display: inline-block; margin: 20px 0; min-width: 220px; }
+        .subtitle { letter-spacing: 3px; font-weight: 600; color: #5e3a73; font-size: 0.8rem; text-transform: uppercase; margin: 15px 0; }
+
+        /* Countdown */
+        .countdown-container { margin: 25px 0; padding: 15px; background: #f9f6fa; border-radius: 10px; border: 1px solid #f1e6f5; }
+        .countdown-timer { display: flex; justify-content: center; gap: 12px; }
+        .time-box { text-align: center; min-width: 55px; }
+        .time-val { font-size: 1.6rem; font-weight: 600; color: #826c96; display: block; }
+        .time-label { font-size: 0.55rem; letter-spacing: 1px; color: #b8860b; text-transform: uppercase; }
+
+        /* Event Details */
+        .date-section { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 25px 0; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37; padding: 15px 0; }
+        .date-large { font-size: 3.5rem; color: #826c96; font-weight: 300; }
+        .date-detail { font-size: 0.75rem; font-weight: 600; color: #4a4a4a; line-height: 1.5; }
+        
+        .venue-info { font-size: 0.95rem; line-height: 1.6; margin: 25px 0; padding: 15px; border: 1px solid #f0f0f0; border-radius: 8px; }
+        
+        /* Navigation Button */
+        .btn-nav { display: block; width: 80%; margin: 15px auto; padding: 15px; background: #5e3a73; color: white; text-decoration: none; border-radius: 50px; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 15px rgba(94, 58, 115, 0.3); transition: 0.3s; }
+        .btn-nav:hover { background: #d4af37; transform: scale(1.05); }
+
+        /* RSVP Form */
+        .rsvp-card { margin-top: 40px; padding: 25px; background: #fffdf9; border: 1px solid #e1d5e8; border-radius: 10px; text-align: left; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #d4af37; border-radius: 5px; box-sizing: border-box; margin-top: 5px; }
+        .radio-group { margin: 20px 0; font-size: 0.9rem; display: flex; flex-direction: column; gap: 10px; }
+        .btn-submit { width: 100%; background: #826c96; color: white; border: none; padding: 12px; border-radius: 25px; cursor: pointer; font-weight: 600; font-family: 'Montserrat', sans-serif; }
+
+        .footer { margin-top: 30px; font-size: 0.7rem; color: #999; border-top: 1px dashed #ccc; padding-top: 20px; }
+
+        @media (max-width: 500px) { .floral { width: 120px; } .names { font-size: 2.8rem; } }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <img src="https://www.transparentpng.com/download/floral/purple-floral-corner-transparent-image-12.png" class="floral top-left">
+        <img src="https://www.transparentpng.com/download/floral/purple-floral-corner-transparent-image-12.png" class="floral top-right">
+        <img src="https://www.transparentpng.com/download/floral/purple-floral-corner-transparent-image-12.png" class="floral bottom-left">
+        <img src="https://www.transparentpng.com/download/floral/purple-floral-corner-transparent-image-12.png" class="floral bottom-right">
+
+        <div class="content">
+            <p class="subtitle">Together with their families</p>
+            
+            <div class="gold-circle">
+                <div class="names">Shiyera<br>&<br>Shane</div>
+            </div>
+
+            <div class="countdown-container">
+                <p class="subtitle" style="font-size: 0.6rem; color: #b8860b; margin-bottom: 8px;">Counting Down to the Big Day</p>
+                <div id="timer" class="countdown-timer">
+                    <div class="time-box"><span id="days" class="time-val">00</span><span class="time-label">Days</span></div>
+                    <div class="time-box"><span id="hours" class="time-val">00</span><span class="time-label">Hrs</span></div>
+                    <div class="time-box"><span id="mins" class="time-val">00</span><span class="time-label">Mins</span></div>
+                    <div class="time-box"><span id="secs" class="time-val">00</span><span class="time-label">Secs</span></div>
+                </div>
+            </div>
+
+            <div class="date-section">
+                <div><div class="date-detail">JUNE</div><div class="date-detail">WEDNESDAY</div></div>
+                <div class="date-large">10</div>
+                <div><div class="date-detail">2026</div><div class="date-detail">AT 4:00 PM</div></div>
+            </div>
+
+            <div class="venue-info">
+                <strong style="color: #5e3a73;">KINGDOM HALL OF JEHOVAH'S WITNESSES</strong><br>
+                WENNAPPUWA<br>
+                <span style="font-size: 0.8rem; color: #777;">1st Lane, Mepals Road, Wennappuwa</span>
+                
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Kingdom+Hall+of+Jehovah's+Witnesses+Wennappuwa" target="_blank" class="btn-nav">
+                    🚗 NAVIGATE TO VENUE
+                </a>
+            </div>
+
+            <div class="rsvp-card">
+                <p class="subtitle" style="text-align: center; color: #b8860b; margin-top: 0;">Kindly RSVP by 31st of May</p>
+                <form action="https://formspree.io/f/mqegqlkl" method="POST">
+                    <label style="font-size: 0.8rem; font-weight: 600;">Name(s):</label>
+                    <input type="text" name="Guest Name" placeholder="Your full name" required>
+
+                    <div class="radio-group">
+                        <label><input type="radio" name="Response" value="Accepts with pleasure" required> Accepts with pleasure</label>
+                        <label><input type="radio" name="Response" value="Declines with Regret"> Declines with Regret</label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">SUBMIT RESPONSE</button>
+                </form>
+            </div>
+
+            <div class="footer">
+                <p>0770507691 SHANE | 0773956850 SHIYERA</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const weddingDate = new Date("June 10, 2026 16:00:00").getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance < 0) { clearInterval(x); document.getElementById("timer").innerHTML = "HAPPY WEDDING DAY!"; }
+        }, 1000);
+    </script>
+</body>
+</html>
